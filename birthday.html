@@ -1,0 +1,233 @@
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Sakshi 💕</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+}
+
+h1 { font-size: 42px; }
+p { font-size: 18px; }
+
+button {
+    margin: 10px;
+    padding: 14px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+}
+
+/* 💬 POPUP */
+.popup {
+    position: fixed;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.95);
+    color: #ff4d6d;
+    padding: 25px;
+    border-radius: 20px;
+    display: none;
+    width: 300px;
+    font-size: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.popup span { font-size: 32px; }
+
+/* ❤️ BIG BRIGHT FLOATING EMOJIS */
+.heart {
+    position: absolute;
+    animation: float 8s linear infinite;
+    opacity: 0.9;
+    text-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-15vh); opacity: 0; }
+}
+
+/* 🖼️ GALLERY */
+.gallery {
+    margin-top: 20px;
+}
+.gallery img {
+    width: 100px;
+    height: 100px;
+    border-radius: 18px;
+    margin: 7px;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+.gallery img:hover { transform: scale(1.2); }
+
+/* 🔐 SECRET */
+#secretBox {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    overflow-y: auto;
+    z-index: 1000;
+}
+#secretContent {
+    max-width: 500px;
+    margin: 50px auto;
+    background: white;
+    color: #ff4d6d;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>Happy Birthday, Sakshi 💕</h1>
+    <p>For my chiuuu 💖 — this is just for you</p>
+
+    <button onclick="startSurprise()">Start the Surprise 🎁</button>
+    <button onclick="unlockSecret()">Unlock a Secret 🔐</button>
+
+    <div class="gallery">
+        <img src="sakshi1.jpg">
+        <img src="sakshi2.jpg">
+        <img src="sakshi3.jpg">
+    </div>
+</div>
+
+<div class="popup" id="popup">
+    <span id="icon">❤️</span>
+    <p id="text"></p>
+</div>
+
+<!-- 🔐 SECRET MESSAGE -->
+<div id="secretBox">
+<div id="secretContent">
+<h3>Only for Sakshi 💕</h3>
+
+<p>
+Hello meri chimukli, wish you many more happy returns of the day 😘😘<br><br>
+I don't know me likhu kya aur kese.. bolne ko boht kuch hai pr kese express kru mujhe nhi pata.<br>
+Pichle saal tk bilkul idea nahi tha ki hum itne close honge. Shyd me tujhe pehle se psnd krta tha😅 pr kabhi realise nhi kiya khudse.<br>
+Uss din jab roya me tere vajaha se tb realise hua.. pehle bura laga pr ab lag rh hai jo hua acha hua 😁😁.<br>
+Tere sath spend Kiya hua har ek pal ⌛mere liye yaadgaar hai, bhale me naraj hou ya gussa tu kese b mana leti h 🎀<br>
+Humne iss baat pe bohot socha hai aur hopefully jesa socha hai vesa hi hoga.<br>
+Me chahta hu ki hum dono apne life me sathme successful ho.. ekdusre ka sath har jagaha de aur kabhi na chode.<br>
+Humara bond dusron ke mukable kai guna acha hai aur isse kisiki nazar na lage 🧿.<br>
+Bhale har waqt sath na ho pr jese har baar bolta hu.. I am just a text away.<br>
+Tere liye me har waqt rhunga, tere side.<br>
+Hopefully 🤞tu b hogi, mere galtiyon ko sudharegi aur chodke nahi jayegi.<br>
+Thank you for being in my life, for being my Best friend 💓.<br>
+Me boht lucky hu ki tune mujhe psnd kiya 🫶 aur plss karte rehna.<br>
+Boht jhagdalu hu, baat baat pr naraj/gussa krta hu pr jesa b hu tera hi hu 🤭 jhelna hoga tujhe .<br>
+Thank you itna kind, caring aur understanding hone ke liye 😇.<br>
+Asha hai ki humara bond kabhi nhi tutega balki aur jyada strong hoga ✨.<br>
+Love you meri jaan ❤️ meri chiuuu... 💕 Sakshi 😘🌍<br><br>
+Enjoy your day 🥳<br>
+— Tera Badmash 😎
+</p>
+
+<button onclick="closeSecret()">Close 💖</button>
+</div>
+</div>
+
+<script>
+const messages = [
+    {icon:"🎂", text:"Today is all about YOU, Sakshi 💕"},
+    {icon:"✨", text:"Your smile makes bad days better."},
+    {icon:"❤️", text:"Chiuuu, you are genuinely special."},
+    {icon:"🌙", text:"Some people feel like home."},
+    {icon:"💫", text:"Some bonds don’t need labels."},
+    {icon:"🌸", text:"You make ordinary moments special."},
+    {icon:"🦋", text:"Soft hearts, strong bond."},
+    {icon:"🎁", text:"This comes straight from my heart 💖" }
+];
+
+let index = 0;
+
+function startSurprise() {
+    document.getElementById("music").play();
+    showPopup();
+    setInterval(createHeart, 250);
+}
+
+function showPopup() {
+    if (index >= messages.length) return;
+    const popup = document.getElementById("popup");
+    document.getElementById("icon").innerText = messages[index].icon;
+    document.getElementById("text").innerText = messages[index].text;
+    popup.style.display = "block";
+    setTimeout(() => {
+        popup.style.display = "none";
+        index++;
+        showPopup();
+    }, 2300);
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+
+    const emojis = ["❤️","💖","💘","✨","💫","🦋","🔐"];
+    heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (30 + Math.random() * 35) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+}
+
+function unlockSecret() {
+    const input = prompt(
+        "🔐 Enter the password\n\nHint 💡: The cutest nickname 💕"
+    );
+    if (input === "chimukli") {
+        document.getElementById("secretBox").style.display = "block";
+    } else {
+        alert("❌ Wrong password\nHint: Something related to choti🫶(small letters)");
+    }
+}
+
+function closeSecret() {
+    document.getElementById("secretBox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
